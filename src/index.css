@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;900&family=Inter:wght@400;700&family=Noto+Sans+SC:wght@400;700;900&display=swap');
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* 核爆模拟器特有样式 */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.dark-map-tiles {
+  filter: invert(100%) hue-rotate(180deg) brightness(70%) contrast(120%) grayscale(70%);
+}
+
+@theme {
+  --font-sans: "Space Grotesk", "Inter", "Noto Sans SC", sans-serif;
+  --color-paper: #F8F7F2;
+  --color-dark: #000000;
+  --color-neo-pink: #FFB6C1;
+  --color-neo-yellow: #FFDE59;
+  --color-neo-blue: #5271FF;
+  --color-neo-orange: #FF5757;
+  --color-neo-green: #7ED957;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-dark);
+  font-family: var(--font-sans);
+}

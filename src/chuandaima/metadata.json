@@ -1,0 +1,6 @@
+{
+  "name": "核爆模拟器",
+  "description": "基于公开按比例缩放定律的可视化核武器宏观毁伤效果的教育类模拟器。",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
