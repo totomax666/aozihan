@@ -121,7 +121,7 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
         <button
           onClick={onStart}
           id="btn-start-test"
-          className="group relative inline-flex items-center justify-center gap-3 bg-natural-charcoal hover:bg-natural-charcoal-hover text-natural-bg dark:bg-[#ece7e0] dark:hover:bg-[#fbf9f6] dark:text-natural-charcoal font-semibold text-lg px-12 py-4 rounded-full shadow-lg shadow-natural-charcoal/10 hover:shadow-natural-charcoal/20 active:scale-98 transition-all cursor-pointer overflow-hidden"
+          className="group relative inline-flex items-center justify-center gap-3 bg-[#f5f2ea] hover:bg-white text-[#0b0b0f] font-semibold text-lg px-12 py-4 rounded-full border border-white/40 shadow-lg shadow-black/20 hover:shadow-black/30 active:scale-98 transition-all cursor-pointer overflow-hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-white/25"
         >
           <span>开启深度探索之旅</span>
           <motion.span
