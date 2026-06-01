@@ -134,7 +134,13 @@ export function HomeTab({ onNavigate, onShowContact }: { onNavigate: (id: string
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="block group cursor-pointer">
+          <div
+            className="block group cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open('?page=naoli', '_blank');
+            }}
+          >
             <NeoCard hover={true} className="flex flex-col h-full min-h-[300px] p-6 bg-white relative transition-all duration-300">
               <div className="mb-6 self-start">
                 <div className="bg-[#000000] text-[#FFFFFF] text-[12px] font-bold tracking-widest px-3 py-1 border-[2px] border-dark shadow-[2px_2px_0_0_#000] inline-block uppercase">
@@ -142,11 +148,11 @@ export function HomeTab({ onNavigate, onShowContact }: { onNavigate: (id: string
                 </div>
               </div>
               <h3 className="text-[24px] md:text-[28px] text-[#000000] font-black mb-4 leading-tight group-hover:text-neo-blue transition-colors">
-                核爆模拟器
+                脑力测试
               </h3>
               <div className="pl-4 border-l-[3px] border-neo-pink mb-auto">
                 <p className="text-[14px] md:text-[16px] text-gray-600 leading-[1.6] font-bold line-clamp-3">
-                  用最直观的方式了解核武器的毁灭性威力，愿我们永远生活在和平的阳光下
+                  多款测试脑力、反应力、短时记忆力和手眼协调能力的小游戏合集
                 </p>
               </div>
               <div className="mt-8 w-full flex flex-col items-start">
@@ -154,7 +160,7 @@ export function HomeTab({ onNavigate, onShowContact }: { onNavigate: (id: string
                   View Product <ArrowRight size={18} strokeWidth={3} />
                 </button>
                 <div className="mt-4 text-[11px] text-gray-500 uppercase tracking-widest font-bold self-center sm:self-start">
-                  RELEASED ON 2026.05.01
+                  RELEASED ON 2026.06.01
                 </div>
               </div>
             </NeoCard>
