@@ -6,6 +6,21 @@ import { ArrowRight, MoveUpRight, Zap, MessageCircle, Smile, Play, Gamepad2, Hea
 import { GeminiLogo, ChatGPTLogo, DeepSeekLogo } from './AILogos';
 import NukeSimulator from '../chuandaima/src/App';
 
+const PRODUCTS = [
+  {
+    id: "naoli",
+    title: "脑力测试",
+    desc: "多款测试脑力、反应力、短时记忆力和手眼协调能力的小游戏合集",
+    releasedOn: "2026.06.01",
+  },
+  {
+    id: "mbti",
+    title: "mbti人格测试",
+    desc: "一款免费的mbti人格测试",
+    releasedOn: "2026.06.01",
+  },
+];
+
 const OrbitIcon = ({ 
   icon: Icon, color, textColor, 
   radius, tiltX, tiltZ, duration, reverse = false,
@@ -134,37 +149,40 @@ export function HomeTab({ onNavigate, onShowContact }: { onNavigate: (id: string
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
-            className="block group cursor-pointer"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open('?page=naoli', '_blank');
-            }}
-          >
-            <NeoCard hover={true} className="flex flex-col h-full min-h-[300px] p-6 bg-white relative transition-all duration-300">
-              <div className="mb-6 self-start">
-                <div className="bg-[#000000] text-[#FFFFFF] text-[12px] font-bold tracking-widest px-3 py-1 border-[2px] border-dark shadow-[2px_2px_0_0_#000] inline-block uppercase">
-                  # 001
+          {PRODUCTS.map((product, i) => (
+            <div
+              key={product.id}
+              className="block group cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                window.open(`?page=${product.id}`, '_blank');
+              }}
+            >
+              <NeoCard hover={true} className="flex flex-col h-full min-h-[300px] p-6 bg-white relative transition-all duration-300">
+                <div className="mb-6 self-start">
+                  <div className="bg-[#000000] text-[#FFFFFF] text-[12px] font-bold tracking-widest px-3 py-1 border-[2px] border-dark shadow-[2px_2px_0_0_#000] inline-block uppercase">
+                    # {(i + 1).toString().padStart(3, '0')}
+                  </div>
                 </div>
-              </div>
-              <h3 className="text-[24px] md:text-[28px] text-[#000000] font-black mb-4 leading-tight group-hover:text-neo-blue transition-colors">
-                脑力测试
-              </h3>
-              <div className="pl-4 border-l-[3px] border-neo-pink mb-auto">
-                <p className="text-[14px] md:text-[16px] text-gray-600 leading-[1.6] font-bold line-clamp-3">
-                  多款测试脑力、反应力、短时记忆力和手眼协调能力的小游戏合集
-                </p>
-              </div>
-              <div className="mt-8 w-full flex flex-col items-start">
-                <button className="w-full sm:w-auto bg-white group-hover:bg-neo-yellow text-dark text-[16px] font-bold py-2.5 px-6 border-[3px] border-dark shadow-[4px_4px_0_0_#000] group-hover:shadow-[6px_6px_0_0_#000] group-active:translate-x-1 group-active:translate-y-1 group-active:shadow-none transition-all duration-300 ease-in-out flex items-center justify-center gap-2 focus:outline-none">
-                  View Product <ArrowRight size={18} strokeWidth={3} />
-                </button>
-                <div className="mt-4 text-[11px] text-gray-500 uppercase tracking-widest font-bold self-center sm:self-start">
-                  RELEASED ON 2026.06.01
+                <h3 className="text-[24px] md:text-[28px] text-[#000000] font-black mb-4 leading-tight group-hover:text-neo-blue transition-colors">
+                  {product.title}
+                </h3>
+                <div className="pl-4 border-l-[3px] border-neo-pink mb-auto">
+                  <p className="text-[14px] md:text-[16px] text-gray-600 leading-[1.6] font-bold line-clamp-3">
+                    {product.desc}
+                  </p>
                 </div>
-              </div>
-            </NeoCard>
-          </div>
+                <div className="mt-8 w-full flex flex-col items-start">
+                  <button className="w-full sm:w-auto bg-white group-hover:bg-neo-yellow text-dark text-[16px] font-bold py-2.5 px-6 border-[3px] border-dark shadow-[4px_4px_0_0_#000] group-hover:shadow-[6px_6px_0_0_#000] group-active:translate-x-1 group-active:translate-y-1 group-active:shadow-none transition-all duration-300 ease-in-out flex items-center justify-center gap-2 focus:outline-none">
+                    View Product <ArrowRight size={18} strokeWidth={3} />
+                  </button>
+                  <div className="mt-4 text-[11px] text-gray-500 uppercase tracking-widest font-bold self-center sm:self-start">
+                    RELEASED ON {product.releasedOn}
+                  </div>
+                </div>
+              </NeoCard>
+            </div>
+          ))}
 
           <NeoCard className="flex flex-col items-center justify-center p-8 h-full min-h-[300px] border-dashed border-[3px] border-dark bg-white shadow-[6px_6px_0_0_#000]">
             <div className="flex items-center flex-col gap-4">
@@ -749,15 +767,7 @@ export function ArticlesTab() {
 }
 
 export function ProductsTab() {
-  // 这里存放你已经做好的产品数据
-  const products = [
-    {
-      id: "naoli",
-      title: "脑力测试",
-      desc: "多款测试脑力、反应力、短时记忆力和手眼协调能力的小游戏合集",
-      releasedOn: "2026.06.01",
-    }
-  ];
+  const products = PRODUCTS;
 
   return (
     <div className="py-8 space-y-12 relative">
@@ -772,12 +782,10 @@ export function ProductsTab() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {products.map((product, i) => (
           <div 
-            key={i} 
+            key={product.id} 
             onClick={(e) => {
               e.preventDefault();
-              if (product.id === "naoli") {
-                window.open('?page=naoli', '_blank');
-              }
+              window.open(`?page=${product.id}`, '_blank');
             }} 
             className="block group cursor-pointer"
           >
@@ -786,7 +794,7 @@ export function ProductsTab() {
               {/* 编号 #001 */}
               <div className="mb-6 self-start">
                 <div className="bg-[#000000] text-[#FFFFFF] text-[12px] font-bold tracking-widest px-3 py-1 border-[2px] border-dark shadow-[2px_2px_0_0_#000] inline-block uppercase">
-                  # 001
+                  # {(i + 1).toString().padStart(3, '0')}
                 </div>
               </div>
 

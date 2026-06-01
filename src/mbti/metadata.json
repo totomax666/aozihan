@@ -1,0 +1,6 @@
+{
+  "name": "MBTI Personality Test",
+  "description": "一个专业且优雅的MBTI十六型人格测试网页，包含详尽的人格特征解析与社交建议。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

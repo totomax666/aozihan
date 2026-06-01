@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type CSSProperties } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { HomeTab, AboutTab, VideoTab, ArticlesTab, ProductsTab } from './components/TabContents';
 import { NeoButton } from './components/NeoComponents';
 import NukeSimulator from './chuandaima/src/App';
 import NaoliApp from './naoli/src/App';
+import MbtiApp from './mbti/src/App';
 
 import { Smile, User, Briefcase, FileText, Menu, X, ArrowRight, MessageCircle, Tv, Music, BookHeart, Eye } from 'lucide-react';
 
@@ -19,12 +20,12 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [fullPage, setFullPage] = useState<null | 'simulator' | 'naoli'>(null);
+  const [fullPage, setFullPage] = useState<null | 'simulator' | 'naoli' | 'mbti'>(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const page = urlParams.get('page');
-    if (page === 'simulator' || page === 'naoli') {
+    if (page === 'simulator' || page === 'naoli' || page === 'mbti') {
       setFullPage(page);
     }
     if (page === 'simulator') {
@@ -32,6 +33,9 @@ export default function App() {
     }
     if (page === 'naoli') {
       document.title = "脑力测试";
+    }
+    if (page === 'mbti') {
+      document.title = "MBTI人格测试";
     }
   }, []);
 
@@ -47,6 +51,36 @@ export default function App() {
     return (
       <div className="w-screen h-screen overflow-auto bg-paper">
         <NaoliApp />
+      </div>
+    );
+  }
+
+  if (fullPage === 'mbti') {
+    const mbtiThemeVars: CSSProperties = {
+      ['--font-serif' as any]: '"Lora", Georgia, serif',
+      ['--font-sans' as any]: '"Inter", ui-sans-serif, system-ui, sans-serif',
+
+      ['--color-natural-bg' as any]: '#f7f3ef',
+      ['--color-natural-dark-bg' as any]: '#1c1a17',
+      ['--color-natural-charcoal' as any]: '#4a453e',
+      ['--color-natural-charcoal-hover' as any]: '#36322d',
+
+      ['--color-natural-green' as any]: '#8b9d83',
+      ['--color-natural-green-dark' as any]: '#6e8265',
+      ['--color-natural-green-light' as any]: '#d1d9cc',
+      ['--color-natural-green-lighter' as any]: '#dbe1d8',
+
+      ['--color-natural-sand' as any]: '#ece7e0',
+      ['--color-natural-sand-dark' as any]: '#2a2622',
+      ['--color-natural-gray' as any]: '#a8a297',
+      ['--color-natural-gray-dark' as any]: '#817a70',
+      ['--color-natural-border' as any]: '#e5e0d8',
+      ['--color-natural-light-sand' as any]: '#fbf9f6',
+    };
+
+    return (
+      <div className="w-screen min-h-screen overflow-auto" style={mbtiThemeVars}>
+        <MbtiApp />
       </div>
     );
   }

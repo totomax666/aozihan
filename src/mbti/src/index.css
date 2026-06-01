@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Lora", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-natural-bg: #f7f3ef;
+  --color-natural-dark-bg: #1c1a17;
+  --color-natural-charcoal: #4a453e;
+  --color-natural-charcoal-hover: #36322d;
+  
+  --color-natural-green: #8b9d83;
+  --color-natural-green-dark: #6e8265;
+  --color-natural-green-light: #d1d9cc;
+  --color-natural-green-lighter: #dbe1d8;
+  
+  --color-natural-sand: #ece7e0;
+  --color-natural-sand-dark: #2a2622;
+  --color-natural-gray: #a8a297;
+  --color-natural-gray-dark: #817a70;
+  --color-natural-border: #e5e0d8;
+  --color-natural-light-sand: #fbf9f6;
+  
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+}
+
