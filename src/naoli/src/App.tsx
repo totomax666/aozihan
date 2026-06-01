@@ -165,13 +165,9 @@ export default function App() {
             onClick={() => setActiveGame(null)}
             className="flex items-center gap-3 cursor-pointer group select-none"
           >
-            {/* The signature rotated white square design layout */}
-            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-200">
-              <div className="w-4 h-4 border-t-2 border-r-2 border-white rotate-45 translate-x-[-1px] translate-y-[1px]"></div>
-            </div>
             <div className="flex flex-col">
               <span className="text-xl md:text-2xl font-black tracking-tighter text-blue-600 leading-none">
-                MINDMETRIC
+                AO脑力测试
               </span>
               <span className="text-[9px] text-slate-400 font-bold tracking-widest uppercase mt-0.5">
                 脑力学基准平台
@@ -186,10 +182,6 @@ export default function App() {
             >
               测评首页
             </span>
-            <div className="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-full text-slate-650 font-semibold text-[11px]">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span>1,248 ONLINE</span>
-            </div>
           </div>
         </div>
       </header>
@@ -207,15 +199,14 @@ export default function App() {
         )}
       </main>
 
-      {/* Tiny clean footer */}
-      <footer className="border-t border-slate-200/60 bg-white py-6 mt-12 text-center text-[11px] text-slate-400 font-medium select-none">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3">
-          <div>
-            &copy; 2026 脑力基准评测中心. 保持好奇，挑战极限灵敏度。
-          </div>
-          <div className="flex items-center gap-1">
-            <span>Powered by React & Tailwind 4</span>
-          </div>
+      <footer className="border-t border-slate-200/60 bg-white py-8 mt-12 text-center text-[11px] text-slate-400 font-medium select-none">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center gap-3">
+          <p className="font-black text-base text-slate-900 text-center">
+            The future is being built. Join us, or watch from the sidelines.
+            <br />
+            未来正在被建造。要么加入，要么旁观。
+          </p>
+          <span className="font-medium text-gray-500 italic">© 2026 敖AO. All rights reserved.</span>
         </div>
       </footer>
     </div>
