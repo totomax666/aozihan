@@ -1,0 +1,6 @@
+{
+  "name": "脑力基准测试 (Human Benchmark)",
+  "description": "一个包含反应速度、序列记忆、黑猩猩短期记忆、数字记忆、词汇记忆、瞄准器和键盘打字等多项脑力与反应基准测试的专业评测平台。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

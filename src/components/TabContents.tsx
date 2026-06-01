@@ -746,9 +746,10 @@ export function ProductsTab() {
   // 这里存放你已经做好的产品数据
   const products = [
     {
-      id: "nuke-simulator",
-      title: "核爆模拟器",
-      desc: "用最直观的方式了解核武器的毁灭性威力，愿我们永远生活在和平的阳光下",
+      id: "naoli",
+      title: "脑力测试",
+      desc: "多款测试脑力、反应力、短时记忆力和手眼协调能力的小游戏合集",
+      releasedOn: "2026.06.01",
     }
   ];
 
@@ -768,8 +769,8 @@ export function ProductsTab() {
             key={i} 
             onClick={(e) => {
               e.preventDefault();
-              if (product.id === "nuke-simulator") {
-                window.open('?page=simulator', '_blank');
+              if (product.id === "naoli") {
+                window.open('?page=naoli', '_blank');
               }
             }} 
             className="block group cursor-pointer"
@@ -803,7 +804,7 @@ export function ProductsTab() {
                   View Product <ArrowRight size={18} strokeWidth={3} />
                 </button>
                 <div className="mt-4 text-[11px] text-gray-500 uppercase tracking-widest font-bold self-center sm:self-start">
-                  RELEASED ON 2026.05.01
+                  RELEASED ON {product.releasedOn}
                 </div>
               </div>
 

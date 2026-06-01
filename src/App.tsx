@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { HomeTab, AboutTab, VideoTab, ArticlesTab, ProductsTab } from './components/TabContents';
 import { NeoButton } from './components/NeoComponents';
 import NukeSimulator from './chuandaima/src/App';
+import NaoliApp from './naoli/src/App';
 
 import { Smile, User, Briefcase, FileText, Menu, X, ArrowRight, MessageCircle, Tv, Music, BookHeart, Eye } from 'lucide-react';
 
@@ -18,20 +19,34 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [isSimulatorPage, setIsSimulatorPage] = useState(false);
+  const [fullPage, setFullPage] = useState<null | 'simulator' | 'naoli'>(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('page') === 'simulator') {
-      setIsSimulatorPage(true);
+    const page = urlParams.get('page');
+    if (page === 'simulator' || page === 'naoli') {
+      setFullPage(page);
+    }
+    if (page === 'simulator') {
       document.title = "核爆模拟器 PRO";
+    }
+    if (page === 'naoli') {
+      document.title = "脑力测试";
     }
   }, []);
 
-  if (isSimulatorPage) {
+  if (fullPage === 'simulator') {
     return (
       <div className="w-screen h-screen overflow-hidden bg-slate-950">
         <NukeSimulator />
+      </div>
+    );
+  }
+
+  if (fullPage === 'naoli') {
+    return (
+      <div className="w-screen h-screen overflow-auto bg-paper">
+        <NaoliApp />
       </div>
     );
   }
