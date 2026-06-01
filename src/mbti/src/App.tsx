@@ -9,14 +9,12 @@ import QuizScreen from './components/QuizScreen';
 import ResultScreen from './components/ResultScreen';
 import { calculateMBTI } from './utils/mbtiCalculator';
 import { Answers, ScoreType } from './types';
-import { Sun, Moon } from 'lucide-react';
 
 export default function App() {
   const [step, setStep] = useState<'welcome' | 'quiz' | 'result'>('welcome');
   const [answers, setAnswers] = useState<Answers>({});
   const [resultType, setResultType] = useState<string>('');
   const [resultScores, setResultScores] = useState<ScoreType | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
   // Handle questionnaire final completion submission
   const handleQuizComplete = (finalAnswers: Answers) => {
@@ -52,7 +50,7 @@ export default function App() {
   };
 
   return (
-    <div className={`relative overflow-hidden min-h-screen bg-black text-natural-sand transition-colors duration-300 font-sans ${isDarkMode ? 'dark' : ''}`}>
+    <div className="dark relative overflow-hidden min-h-screen bg-[#0b0b0f] text-[#f5f2ea] transition-colors duration-300 font-sans">
       
       {/* Soft Organic Blur Backdrops */}
       <div className="absolute top-[10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-[#dbe1d8]/60 dark:bg-emerald-950/10 blur-[120px] pointer-events-none -z-10" />
@@ -63,24 +61,12 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={handleRestart} id="header-logo">
             <div className="h-10 w-10 bg-natural-green rounded-full flex items-center justify-center text-white font-serif italic text-xl shadow-sm">
-              ψ
+              AO
             </div>
             <span className="font-serif font-bold text-natural-charcoal dark:text-white tracking-tight flex items-center gap-1.5 text-lg md:text-xl">
               <span>MBTI</span>
               <span className="text-natural-green font-normal">探索测试</span>
             </span>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {/* Elegant Theme toggle switch */}
-            <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              id="btn-toggle-theme"
-              className="p-2.5 rounded-full border border-natural-border dark:border-neutral-800 text-natural-gray dark:text-neutral-500 hover:text-natural-charcoal dark:hover:text-white hover:bg-natural-sand/35 dark:hover:bg-neutral-900 transition-all cursor-pointer"
-              title={isDarkMode ? "亮阳模式" : "幽谷模式"}
-            >
-              {isDarkMode ? <Sun size={17} /> : <Moon size={17} />}
-            </button>
           </div>
         </div>
       </header>
