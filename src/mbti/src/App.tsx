@@ -3,30 +3,20 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import WelcomeScreen from './components/WelcomeScreen';
 import QuizScreen from './components/QuizScreen';
 import ResultScreen from './components/ResultScreen';
 import { calculateMBTI } from './utils/mbtiCalculator';
 import { Answers, ScoreType } from './types';
-import { Sun, Moon, Sparkles } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 
 export default function App() {
   const [step, setStep] = useState<'welcome' | 'quiz' | 'result'>('welcome');
   const [answers, setAnswers] = useState<Answers>({});
   const [resultType, setResultType] = useState<string>('');
   const [resultScores, setResultScores] = useState<ScoreType | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
-  // Sync theme configurations with document body classes
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (isDarkMode) {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-  }, [isDarkMode]);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
   // Handle questionnaire final completion submission
   const handleQuizComplete = (finalAnswers: Answers) => {
@@ -62,7 +52,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative overflow-hidden min-h-screen bg-natural-bg text-natural-charcoal dark:bg-natural-dark-bg dark:text-natural-sand transition-colors duration-300 font-sans">
+    <div className={`relative overflow-hidden min-h-screen bg-black text-natural-sand transition-colors duration-300 font-sans ${isDarkMode ? 'dark' : ''}`}>
       
       {/* Soft Organic Blur Backdrops */}
       <div className="absolute top-[10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-[#dbe1d8]/60 dark:bg-emerald-950/10 blur-[120px] pointer-events-none -z-10" />
@@ -122,15 +112,18 @@ export default function App() {
         )}
       </main>
 
-      {/* Humble Footer */}
-      <footer className="border-t border-natural-border/50 bg-natural-sand/15 dark:bg-natural-dark-bg/25 dark:border-neutral-900/60 py-10 text-center text-xs text-natural-gray dark:text-neutral-500 space-y-2.5">
-        <div className="flex items-center justify-center gap-2 font-mono font-medium tracking-widest uppercase">
-          <Sparkles size={11} className="text-natural-green" />
-          <span>MYERS-BRIGGS TYPE INDICATOR (MBTI) COMPASS</span>
+      <footer className="border-t-[3px] border-dark bg-white py-10 mt-12 text-center">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col items-center gap-3">
+          <p className="font-black text-xl text-dark text-center">
+            The future is being built. Join us, or watch from the sidelines.
+            <br />
+            未来正在被建造。要么加入，要么旁观。
+          </p>
+          <span className="font-medium text-gray-500 italic">© 2026 敖AO. All rights reserved.</span>
+          <p className="max-w-2xl text-[12px] leading-relaxed text-gray-600 font-medium">
+            声明：本测评基于荣格心理分析学派大样本行为推论，旨在提供高质感的自我关照，性格绝无好恶优劣之分。
+          </p>
         </div>
-        <p className="max-w-md mx-auto px-6 leading-relaxed">
-          声明：本测评基于荣格心理分析学派大样本行为推论，旨在提供高质感的自我关照，性格绝无好恶优劣之分。
-        </p>
       </footer>
     </div>
   );
